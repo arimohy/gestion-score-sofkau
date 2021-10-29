@@ -26,6 +26,7 @@ public class CommandController {
     @Path("/assignScore")
     public Response executor(AssignScoreCommand command) {
         messageService.send(command);
+        System.out.println("Se esta asignado score -- commandController");
         return Response.ok().build();
     }
 
@@ -33,6 +34,7 @@ public class CommandController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/createProgram")
     public Response executor(CreateProgramCommand command) {
+        System.out.println("Se esta creando un programa -- commandController");
         messageService.send(command);
         return Response.ok().build();
     }
@@ -42,6 +44,7 @@ public class CommandController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/addCourse")
     public Response executor(AddCourseCommand command) {
+        System.out.println("Se esta agregando curso -- commandController");
         messageService.send(command);
         return Response.ok().build();
     }

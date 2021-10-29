@@ -50,6 +50,7 @@ public class MessageService {
         return new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("Esta entrando al handleDelivery recibido por EVENTO...");
                 var message = new String(body, StandardCharsets.UTF_8);
                 try {
                     var event = EventSerializer.instance()
@@ -68,7 +69,8 @@ public class MessageService {
         return new DefaultConsumer(channel) {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                   var message = new String(body, StandardCharsets.UTF_8);
+                    System.out.println("Esta entrando al handleDelivery recibido por COMANDO...");
+                    var message = new String(body, StandardCharsets.UTF_8);
 
                     try {
                         var command = CommandSerializer.instance()
